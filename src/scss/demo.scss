@@ -1,0 +1,172 @@
+.maincontainer{
+  min-height: 100vh;
+  max-width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftside{
+  width: 50%;
+ 
+}
+
+.rightside{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.title{
+font-size: medium;
+padding-left: 10px;
+font-weight: bold;
+}
+
+.flex-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.firstbox{
+  // text-align: center;
+  gap:20px;
+  border:2px solid green;
+  width: 350px;
+  height: 100px;
+  margin: 10px;
+  // padding: 20px;
+  font-size:015x;
+}
+
+.secondbox{
+//  display: flex;
+  border:2px solid red;
+  width: 350px;
+  height: 150px;
+  margin: 10px;
+  // padding: 10px;
+  font-size: 15px;
+}
+
+.inputbox{
+  border: 2px solid green;
+  width: 300px;
+}
+
+.submitcolor{
+  border: 2px solid green;
+  margin-top: 10px;
+  color:green;
+
+}
+
+.inputbox1{
+  border: 2px solid red;
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+.inputbox2{
+  border: 2px solid red;
+  width: 300px;
+}
+
+.submitcolor1{
+  border: 2px solid red;
+ margin-top:10px;
+ color: red;
+
+} 
+
+.rightcontainer{
+  display: flex;
+  flex-direction: row;
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rightbox{
+ 
+  width: 150px;
+  height: 150px;
+  border: solid black;
+}
+
+.intheform{
+  padding:20px;
+}
+
+.righttitles{
+  font-weight: bold;
+ text-align: center;
+}
+
+.fa-money{
+  display: flex;
+  margin-top: 20px;
+  color: blue;
+ justify-content: center;
+}
+
+.fa-credit-card-alt{
+  display: flex;
+  margin-top: 20px;
+  color: blue;
+  justify-content: center;
+}
+
+.fa-usd{
+  display: flex;
+  margin-top: 20px;
+  color: blue;
+  justify-content: center;
+
+}
+
+.moneybudget{
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: green;
+  font-weight: bold;
+}
+
+.moneyexpenses{
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: red;
+  font-weight: bold;
+
+}
+
+.moneybalance{
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: green;
+  font-weight: bold;
+}
+
+.buycontainer{
+  display: flex;
+  
+}
+
+.bottomcontainer{
+  margin-top: 40px;
+}
+
+.buylist{
+  margin-top: 40px;
+  color: red;
+}
+
+.rightbox > .buylist{
+  display: flex;
+  justify-content: center;
+}
