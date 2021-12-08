@@ -1,6 +1,6 @@
 .maincontainer{
   min-height: 100vh;
-  max-width: 40%;
+  max-width: 80%;
   display: flex;
   justify-content: space-between;
 }
@@ -35,7 +35,7 @@ font-weight: bold;
   height: 100px;
   margin: 10px;
   // padding: 20px;
-  font-size:015x;
+  font-size:15x;
 }
 
 .secondbox{
@@ -166,7 +166,35 @@ font-weight: bold;
   color: red;
 }
 
-.rightbox > .buylist{
-  display: flex;
-  justify-content: center;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;}
+
+  .buycolor{
+    color: red;
+   }
+
+
+  tr.apostasi1>th {
+    padding-bottom: 2em;
+    padding-left: 15px;
+     }
+
+  tr.apostasi2>td{
+    color: red;
+    padding-bottom: 0.5em;
+    // padding-left: 50px;
+}
+
+ .mytable tbody {
+   text-align: center;
+}
+
+ .mytable th, td {
+   justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left:25px;
+  padding-right: 250px;
 }
