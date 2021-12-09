@@ -126,7 +126,7 @@
     <script>
       var budgetSum = 0;
       var expenseSum = 0;
-      var expensenameSum;
+
       var lista = [];
 
       const functionBalance = () => {
@@ -149,6 +149,10 @@
       };
 
       const functionExpenses = () => {
+
+        // thn evgala apo global
+        var expensenameSum;
+
         expenseSum = document.getElementById("expense").value;
         expensenameSum = document.getElementById("expensename").value;
         expenseValue = document.getElementById("expense").value;
@@ -165,7 +169,7 @@
         var cell3 = row.insertCell(2);
         cell1.innerHTML = document.getElementById('expensename').value;
         cell2.innerHTML = document.getElementById('expense').value;
-        cell3.innerHTML = '<span onclick="myalertfn(' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
+        cell3.innerHTML = '<span onclick="myalertfn()' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
 
         functionBalance()
       };
