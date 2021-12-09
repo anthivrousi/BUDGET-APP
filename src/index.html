@@ -129,19 +129,15 @@
       var expensenameSum;
       var lista = [];
 
-
-      // [{ title: "", value: "" },];
       const functionBalance = () => {
 
         var balanceSum = budgetSum - expenseSum;
         document.querySelector("#balance").innerHTML = '$' + balanceSum
-        var sum = 0;
 
+        var sum = 0;
         for (var i = 0; i < lista.length; i++) {
           sum = sum + parseInt(lista[i].value);
-
         }
-        console.log(sum);
         document.getElementById("expenses").innerHTML = sum;
       }
 
@@ -157,12 +153,7 @@
         expensenameSum = document.getElementById("expensename").value;
         expenseValue = document.getElementById("expense").value;
 
-        // document.querySelector("#expenses").innerHTML = '$' + expenseSum
-
-        // document.querySelector("#buythings").innerHTML = '-BUY ' + expensenameSum;
-
-        // document.querySelector("#moneythings").innerHTML = '$' + expenseValue;
-
+        //  LIST PUSH
         lista.push({ title: expensenameSum, value: expenseSum });
 
         var table = document.getElementById("mytable");
