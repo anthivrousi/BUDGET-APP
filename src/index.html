@@ -119,21 +119,30 @@
           <tbody id="tableBody"></tbody>
 
         </table>
+      </div>
     </div>
-   </div>
 
 
     <script>
       var budgetSum = 0;
       var expenseSum = 0;
       var expensenameSum;
-      var lista = [{ title: "", value: "" }];
+      var lista = [];
 
- 
+
+      // [{ title: "", value: "" },];
       const functionBalance = () => {
+
         var balanceSum = budgetSum - expenseSum;
         document.querySelector("#balance").innerHTML = '$' + balanceSum
+        var sum = 0;
 
+        for (var i = 0; i < lista.length; i++) {
+          sum = sum + parseInt(lista[i].value);
+
+        }
+        console.log(sum);
+        document.getElementById("expenses").innerHTML = sum;
       }
 
       const functionCalculate = () => {
@@ -155,10 +164,36 @@
         // document.querySelector("#moneythings").innerHTML = '$' + expenseValue;
 
         lista.push({ title: expensenameSum, value: expenseSum });
-        // document.getElementById("expensename") = lista;
+
+        var table = document.getElementById("mytable");
+        var tbd = document.getElementsByTagName("tbody")[0];
+
+        var row = tbd.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        cell1.innerHTML = document.getElementById('expensename').value;
+        cell2.innerHTML = document.getElementById('expense').value;
+        cell3.innerHTML = '<span onclick="myalertfn(' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
+
+        functionBalance()
+      };
+
+      function myalertfn(katipoupira) {
+
+        document.getElementById("mytable").deleteRow(katipoupira);
+      }
 
 
-        // DEN MAS KANEI DES TO META
+      // const functionExpensename = () => {
+      //   expensenameSum = document.getElementById("expensename").value;
+      //   console.log(expensenameSum);
+      //   document.querySelector("#anthi").innerHTML = expensenameSum;
+
+
+      // }
+
+       // DEN MAS KANEI DES TO META
 
         // var table = document.getElementById("mytable");
 
@@ -178,49 +213,6 @@
         //     cell.innerHTML = lista[i][j];
         //   }
         // }
-
-        var table = document.getElementById("mytable");
-        var tbd = document.getElementsByTagName("tbody")[0];
-
-        var row = tbd.insertRow(0);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        cell1.innerHTML = document.getElementById('expensename').value;
-        cell2.innerHTML = document.getElementById('expense').value;
-        cell3.innerHTML = '<span onclick="myalertfn(' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
-       
-        functionBalance()
-      };
-
-
-      function myalertfn(katipoupira) {
-        console.log(katipoupira)
-        document.getElementById("mytable").deleteRow(katipoupira);
-}
-  
-
-     
-        // let table = document.querySelector('mytable');
-
-     
-      
-        // document.getElementById("mytable").deleteRow(this);
-
- 
-
-      // var lista = [];
-      // lista.push();
-      // document.getElementById("expensename") = lista;
-      // console.log(lista);
-
-      // const functionExpensename = () => {
-      //   expensenameSum = document.getElementById("expensename").value;
-      //   console.log(expensenameSum);
-      //   document.querySelector("#anthi").innerHTML = expensenameSum;
-
-
-      // }
 
     </script>
   </div>
