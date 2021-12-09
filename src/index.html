@@ -106,7 +106,7 @@
 
       <div class="bottomcontainer">
 
-        <table class="mytable">
+        <table id="mytable">
 
           <!-- first bottom box -->
           <thead>
@@ -116,42 +116,20 @@
               <th> </th>
             </tr>
           </thead>
-
-          <!-- second bottom box -->
-
-          <tbody>
-            <tr class="apostasi2">
-              <td id="anthi">- BUY COOKIES</th>
-              <td>$10</th>
-              <td><i class="fa fa-trash-o" aria-hidden="true"></i> </th>
-            </tr>
-
-
-            <!-- third bottom box -->
-
-            <tr class="buycolor">
-              <td>- BUY MILK</th>
-              <td>$50</th>
-              <td><i class="fa fa-trash-o" aria-hidden="true"></i> </th>
-            </tr>
-          </tbody>
+          <tbody id="tableBody"></tbody>
 
         </table>
-
-
-
-      </div>
-
     </div>
+   </div>
 
 
     <script>
       var budgetSum = 0;
       var expenseSum = 0;
       var expensenameSum;
-      var lista = [{ title: "cookies", value: 10 }];
+      var lista = [{ title: "", value: "" }];
 
-
+ 
       const functionBalance = () => {
         var balanceSum = budgetSum - expenseSum;
         document.querySelector("#balance").innerHTML = '$' + balanceSum
@@ -167,22 +145,69 @@
 
       const functionExpenses = () => {
         expenseSum = document.getElementById("expense").value;
-        document.querySelector("#expenses").innerHTML = '$' + expenseSum
-
-
         expensenameSum = document.getElementById("expensename").value;
-        console.log(expensenameSum);
-        document.querySelector("#anthi").innerHTML = '-BUY ' + expensenameSum;
+        expenseValue = document.getElementById("expense").value;
 
+        // document.querySelector("#expenses").innerHTML = '$' + expenseSum
 
+        // document.querySelector("#buythings").innerHTML = '-BUY ' + expensenameSum;
+
+        // document.querySelector("#moneythings").innerHTML = '$' + expenseValue;
 
         lista.push({ title: expensenameSum, value: expenseSum });
         // document.getElementById("expensename") = lista;
-        console.log(lista);
 
+
+        // DEN MAS KANEI DES TO META
+
+        // var table = document.getElementById("mytable");
+
+        // for (var i = 0; i < lista.length; i++) {
+        //   console.log('Index', i);
+        // create a new row
+        // console.log(' Lista', lista.length);
+        // var newRow = table.insertRow(lista.length);
+
+        // for (var j = 0; j < lista[i].length; j++) {
+
+
+        //     // create a new cell
+        // var cell = newRow.insertCell(j);
+
+        //     // add value to the cell
+        //     cell.innerHTML = lista[i][j];
+        //   }
+        // }
+
+        var table = document.getElementById("mytable");
+        var tbd = document.getElementsByTagName("tbody")[0];
+
+        var row = tbd.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        cell1.innerHTML = document.getElementById('expensename').value;
+        cell2.innerHTML = document.getElementById('expense').value;
+        cell3.innerHTML = '<span onclick="myalertfn(' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
+       
         functionBalance()
       };
 
+
+      function myalertfn(katipoupira) {
+        console.log(katipoupira)
+        document.getElementById("mytable").deleteRow(katipoupira);
+}
+  
+
+     
+        // let table = document.querySelector('mytable');
+
+     
+      
+        // document.getElementById("mytable").deleteRow(this);
+
+ 
 
       // var lista = [];
       // lista.push();
@@ -202,13 +227,3 @@
 </body>
 
 </html>
-<!-- array=["nikos", "aggelos"]
-array=[{
-expenseTitle: "Gala",
-expenseValue: "10",
-}, {expenseTitle: "avga",
-expenseValue: "20",}]
-
-{
-sads: "asdad"
-} -->
