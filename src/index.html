@@ -126,7 +126,6 @@
     <script>
       var budgetSum = 0;
       var expenseSum = 0;
-
       var lista = [];
 
       const functionBalance = () => {
@@ -163,13 +162,47 @@
         var table = document.getElementById("mytable");
         var tbd = document.getElementsByTagName("tbody")[0];
 
-        var row = tbd.insertRow(0);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        cell1.innerHTML = document.getElementById('expensename').value;
-        cell2.innerHTML = document.getElementById('expense').value;
-        cell3.innerHTML = '<span onclick="myalertfn()' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
+        // var row = tbd.insertRow(0);
+        // var cell1 = row.insertCell(0);
+        // var cell2 = row.insertCell(1);
+        // var cell3 = row.insertCell(2);
+        // cell1.innerHTML = document.getElementById('expensename').value;
+        // cell2.innerHTML = document.getElementById('expense').value;
+        // cell3.innerHTML = '<span onclick="myalertfn()' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
+
+
+
+        // LOCAL STORAGE
+
+
+
+
+        localStorage.setItem("my_lista", JSON.stringify(lista)); //store lista
+        var storedLista = JSON.parse(localStorage.getItem("my_lista"));
+        // cell1.innerHTML = document.getElementByIdT("tableBody").innerHTML = localStorage.getItem("title");
+
+        console.log(storedLista);
+        cell1.innerHTML = storedLista;
+
+
+
+        // var key = document.getElementById('expensename').value;
+        // for (var i = 0; i < localStorage.length; i++) {
+        //   console.log(localStorage.getItem(localStorage.key(i)));
+        //   cell1.innerHTML = (localStorage.getItem(localStorage.key(i)));
+        // }
+
+        // if (typeof (Storage) !== "undefined") {
+
+        //   localStorage.setItem("title", lista = []);
+        //   //  
+        //   console.log(localStorage);
+        // cell1.innerHTML = localStorage.getItem("title", "lista");
+        // cell2.innerHTML = localStorage.getItem("value", "suggrafeas");
+
+        // }
+
+
 
         functionBalance()
       };
@@ -178,6 +211,10 @@
 
         document.getElementById("mytable").deleteRow(katipoupira);
       }
+
+
+
+
 
 
       // const functionExpensename = () => {
