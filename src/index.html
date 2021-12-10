@@ -126,7 +126,10 @@
     <script>
       var budgetSum = 0;
       var expenseSum = 0;
-      var lista = [];
+      // var lista = [];
+      var lista = JSON.parse(localStorage.getItem("my_lista"));
+      console.log(lista);
+
 
       const functionBalance = () => {
 
@@ -167,11 +170,13 @@
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
 
+        cell1.innerHTML = storedLista;
+        // console.log(storedLista);
+
         for (var i = 0; i < lista.length; i++) {
 
-          console.log(lista[i].title)
-          cell1.innerHTML = lista[i].title
-          cell2.innerHTML = lista[i].value
+          cell1.innerHTML = lista[i].title;
+          cell2.innerHTML = lista[i].value;
           cell3.innerHTML = '<span onclick="myalertfn()' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
 
         }
@@ -191,37 +196,16 @@
         // LOCAL STORAGE
 
 
-
-
         localStorage.setItem("my_lista", JSON.stringify(lista)); //store lista
         var storedLista = JSON.parse(localStorage.getItem("my_lista"));
-        // cell1.innerHTML = document.getElementByIdT("tableBody").innerHTML = localStorage.getItem("title");
-
-        console.log(storedLista);
-        cell1.innerHTML = storedLista;
-
-
-
-        // var key = document.getElementById('expensename').value;
-        // for (var i = 0; i < localStorage.length; i++) {
-        //   console.log(localStorage.getItem(localStorage.key(i)));
-        //   cell1.innerHTML = (localStorage.getItem(localStorage.key(i)));
-        // }
-
-        // if (typeof (Storage) !== "undefined") {
-
-        //   localStorage.setItem("title", lista = []);
-        //   //  
-        //   console.log(localStorage);
-        // cell1.innerHTML = localStorage.getItem("title", "lista");
-        // cell2.innerHTML = localStorage.getItem("value", "suggrafeas");
-
-        // }
 
 
 
         functionBalance()
       };
+
+
+
 
       function myalertfn(katipoupira) {
 
@@ -229,38 +213,32 @@
       }
 
 
+      // DEN MAS KANEI DES TO META
+
+      // var table = document.getElementById("mytable");
+
+      // for (var i = 0; i < lista.length; i++) {
+      //   console.log('Index', i);
+      // create a new row
+      // console.log(' Lista', lista.length);
+      // var newRow = table.insertRow(lista.length);
+
+      // for (var j = 0; j < lista[i].length; j++) {
 
 
+      //     // create a new cell
+      // var cell = newRow.insertCell(j);
 
-
-      // const functionExpensename = () => {
-      //   expensenameSum = document.getElementById("expensename").value;
-      //   console.log(expensenameSum);
-      //   document.querySelector("#anthi").innerHTML = expensenameSum;
-
-
+      //     // add value to the cell
+      //     cell.innerHTML = lista[i][j];
+      //   }
       // }
 
-       // DEN MAS KANEI DES TO META
+      // localStorage.setItem("my_lista", JSON.stringify(lista)); //store lista
+      // var storedLista = JSON.parse(localStorage.getItem("my_lista"));
 
-        // var table = document.getElementById("mytable");
-
-        // for (var i = 0; i < lista.length; i++) {
-        //   console.log('Index', i);
-        // create a new row
-        // console.log(' Lista', lista.length);
-        // var newRow = table.insertRow(lista.length);
-
-        // for (var j = 0; j < lista[i].length; j++) {
-
-
-        //     // create a new cell
-        // var cell = newRow.insertCell(j);
-
-        //     // add value to the cell
-        //     cell.innerHTML = lista[i][j];
-        //   }
-        // }
+      // var x = localStorage.getItem("my_lista");
+      // console.log(x);
 
     </script>
   </div>
