@@ -117,6 +117,8 @@
             </tr>
           </thead>
           <tbody id="tableBody"></tbody>
+          <td id="title"></td>
+          <td id="value"></td>
 
         </table>
       </div>
@@ -126,15 +128,35 @@
     <script>
       var budgetSum = 0;
       var expenseSum = 0;
-      // var lista = [];
+
       var lista = JSON.parse(localStorage.getItem("my_lista"));
-      console.log(lista);
+
+      var table = document.getElementById("mytable");
+      var tbd = document.getElementsByTagName("tbody")[0];
+      var row;
+      var cell1;
+      var cell2;
+      var cell3;
+      for (var i = 0; i < lista.length; i++) {
+        row = tbd.insertRow(i);
+        cell1 = row.insertCell(0);
+        cell2 = row.insertCell(1);
+        cell3 = row.insertCell(2);
+        cell1.innerHTML = lista[i].title
+        cell2.innerHTML = lista[i].value
+      }
+      // var cell1 = row.insertCell(0);
+      // row.innerHTML = JSON.stringify(lista[i].title);
+
+      // var cell2 = row.insertCell(1);
+      // var cell3 = row.insertCell(2);
+      // cell[i].innerHTML = lista[i];
 
 
       const functionBalance = () => {
 
         var balanceSum = budgetSum - expenseSum;
-        document.querySelector("#balance").innerHTML = '$' + balanceSum
+        document.querySelector("#balance").innerHTML = '$' + balanceSum;
 
         var sum = 0;
         for (var i = 0; i < lista.length; i++) {
@@ -170,7 +192,7 @@
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
 
-        cell1.innerHTML = storedLista;
+        //   cell1.innerHTML = storedLista;
         // console.log(storedLista);
 
         for (var i = 0; i < lista.length; i++) {
@@ -180,8 +202,6 @@
           cell3.innerHTML = '<span onclick="myalertfn()' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
 
         }
-
-
 
         // var row = tbd.insertRow(0);
         // var cell1 = row.insertCell(0);
@@ -199,19 +219,14 @@
         localStorage.setItem("my_lista", JSON.stringify(lista)); //store lista
         var storedLista = JSON.parse(localStorage.getItem("my_lista"));
 
-
-
         functionBalance()
       };
-
-
 
 
       function myalertfn(katipoupira) {
 
         document.getElementById("mytable").deleteRow(katipoupira);
       }
-
 
       // DEN MAS KANEI DES TO META
 
@@ -233,12 +248,6 @@
       //     cell.innerHTML = lista[i][j];
       //   }
       // }
-
-      // localStorage.setItem("my_lista", JSON.stringify(lista)); //store lista
-      // var storedLista = JSON.parse(localStorage.getItem("my_lista"));
-
-      // var x = localStorage.getItem("my_lista");
-      // console.log(x);
 
     </script>
   </div>
