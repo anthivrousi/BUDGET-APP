@@ -147,7 +147,6 @@
         cell1.innerHTML = lista[i].title
         cell2.innerHTML = lista[i].value
         cell3.innerHTML = '<span onclick="myalertfn()' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
-
       }
 
       const functionBalance = () => {
@@ -200,11 +199,15 @@
         // LOCAL STORAGE
 
 
-        localStorage.setItem("my_lista", JSON.stringify(lista)); //store lista
-        var storedLista = JSON.parse(localStorage.getItem("my_lista"));
+        // localStorage.setItem("my_lista", JSON.stringify(lista)); //store lista
+        // var storedLista = JSON.parse(localStorage.getItem("my_lista"));
 
         functionBalance()
       };
+
+
+      localStorage.setItem("my_lista", JSON.stringify(lista)); //store lista
+      var storedLista = JSON.parse(localStorage.getItem("my_lista"));
 
 
       function myalertfn(katipoupira) {
