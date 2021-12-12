@@ -129,6 +129,7 @@
       var budgetSum = 0;
       var expenseSum = 0;
 
+      // GET ITEMS
       var lista = JSON.parse(localStorage.getItem("my_lista"));
 
       var table = document.getElementById("mytable");
@@ -137,21 +138,17 @@
       var cell1;
       var cell2;
       var cell3;
-      for (var i = 0; i < lista.length; i++) {
+      for (var i = 0; i < lista; i++) {
+        //evgala to length
         row = tbd.insertRow(i);
         cell1 = row.insertCell(0);
         cell2 = row.insertCell(1);
         cell3 = row.insertCell(2);
         cell1.innerHTML = lista[i].title
         cell2.innerHTML = lista[i].value
+        cell3.innerHTML = '<span onclick="myalertfn()' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
+
       }
-      // var cell1 = row.insertCell(0);
-      // row.innerHTML = JSON.stringify(lista[i].title);
-
-      // var cell2 = row.insertCell(1);
-      // var cell3 = row.insertCell(2);
-      // cell[i].innerHTML = lista[i];
-
 
       const functionBalance = () => {
 
@@ -159,7 +156,8 @@
         document.querySelector("#balance").innerHTML = '$' + balanceSum;
 
         var sum = 0;
-        for (var i = 0; i < lista.length; i++) {
+        for (var i = 0; i < lista; i++) {
+          //ebgala length
           sum = sum + parseInt(lista[i].value);
         }
         document.getElementById("expenses").innerHTML = sum;
@@ -191,26 +189,12 @@
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
-
-        //   cell1.innerHTML = storedLista;
-        // console.log(storedLista);
-
         for (var i = 0; i < lista.length; i++) {
 
           cell1.innerHTML = lista[i].title;
           cell2.innerHTML = lista[i].value;
           cell3.innerHTML = '<span onclick="myalertfn()' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
-
         }
-
-        // var row = tbd.insertRow(0);
-        // var cell1 = row.insertCell(0);
-        // var cell2 = row.insertCell(1);
-        // var cell3 = row.insertCell(2);
-        // cell1.innerHTML = document.getElementById('expensename').value;
-        // cell2.innerHTML = document.getElementById('expense').value;
-        // cell3.innerHTML = '<span onclick="myalertfn()' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
-
 
 
         // LOCAL STORAGE
@@ -228,26 +212,7 @@
         document.getElementById("mytable").deleteRow(katipoupira);
       }
 
-      // DEN MAS KANEI DES TO META
 
-      // var table = document.getElementById("mytable");
-
-      // for (var i = 0; i < lista.length; i++) {
-      //   console.log('Index', i);
-      // create a new row
-      // console.log(' Lista', lista.length);
-      // var newRow = table.insertRow(lista.length);
-
-      // for (var j = 0; j < lista[i].length; j++) {
-
-
-      //     // create a new cell
-      // var cell = newRow.insertCell(j);
-
-      //     // add value to the cell
-      //     cell.innerHTML = lista[i][j];
-      //   }
-      // }
 
     </script>
   </div>
