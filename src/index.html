@@ -128,7 +128,8 @@
   <script>
     var budgetSum = 0;
     var expenseSum = 0;
-    var sum = 0;
+    var expensenameSum;
+
 
     // GET ITEMS
     var lista = JSON.parse(localStorage.getItem("my_lista"));
@@ -150,19 +151,28 @@
       cell3.innerHTML = '<span onclick="myalertfn()' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
     }
 
+
+    // FUNCTION BALANCE
     const functionBalance = () => {
 
+
+      //-SUM 
       var balanceSum = budgetSum - expenseSum;
       document.querySelector("#balance").innerHTML = '$' + balanceSum;
 
-      // var sum = 0;
+      // vazw mesa to sum giati thelw na ekteleitai kai na allazei kai to balance mazi
+      var sum = 0;
       for (var i = 0; i < lista.length; i++) {
         //evala to i sti lista
         sum = sum + parseInt(lista[i].value);
-        console.log(sum)
+
+        // console.log(lista[i].value)
+        // console.log(typeof sum)
         // console.log(sum)
       }
-      document.querySelector("#expenses").innerHTML = '$' + sum;
+      document.querySelector("#expenses").innerHTML = '$' + expenseSum;
+
+
     }
 
     const functionCalculate = () => {
@@ -175,15 +185,14 @@
 
     const functionExpenses = () => {
 
-      // thn evgala apo global
-      var expensenameSum;
 
+
+      // thn evgala apo global
+      // var expensenameSum;
 
       expenseSum = document.getElementById("expense").value;
       expensenameSum = document.getElementById("expensename").value;
       // expenseValue = document.getElementById("expense").value;   //??????
-
-
 
       //  LIST PUSH
       lista.push({ title: expensenameSum, value: expenseSum });
@@ -205,26 +214,19 @@
       // LOCAL STORAGE
 
 
-      // localStorage.setItem("my_lista", JSON.stringify(lista)); //store lista
-      // var storedLista = JSON.parse(localStorage.getItem("my_lista"));
+      localStorage.setItem("my_lista", JSON.stringify(lista)); //store lista
+      var storedLista = JSON.parse(localStorage.getItem("my_lista"));
 
       functionBalance()
     };
-
-
-    localStorage.setItem("my_lista", JSON.stringify(lista)); //store lista
-    var storedLista = JSON.parse(localStorage.getItem("my_lista"));
-
 
     function myalertfn(katipoupira) {
 
       document.getElementById("mytable").deleteRow(katipoupira);
     }
 
-
-
   </script>
-  <!-- </div> -->
+
 </body>
 
 </html>
