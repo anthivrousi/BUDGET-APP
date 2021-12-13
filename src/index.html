@@ -129,6 +129,7 @@
     var budgetSum = 0;
     var expenseSum = 0;
     var expensenameSum;
+    var sum = 0;
 
 
     // GET ITEMS
@@ -157,11 +158,11 @@
 
 
       //-SUM 
-      var balanceSum = budgetSum - expenseSum;
+      var balanceSum = budgetSum - sum;
       document.querySelector("#balance").innerHTML = '$' + balanceSum;
 
       // vazw mesa to sum giati thelw na ekteleitai kai na allazei kai to balance mazi
-      var sum = 0;
+      sum = 0;
       for (var i = 0; i < lista.length; i++) {
         //evala to i sti lista
         sum = sum + parseInt(lista[i].value);
@@ -171,8 +172,6 @@
         // console.log(sum)
       }
       document.querySelector("#expenses").innerHTML = '$' + expenseSum;
-
-
     }
 
     const functionCalculate = () => {
