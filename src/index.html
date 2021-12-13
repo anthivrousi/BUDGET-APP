@@ -123,102 +123,108 @@
         </table>
       </div>
     </div>
+  </div>
+
+  <script>
+    var budgetSum = 0;
+    var expenseSum = 0;
+    var sum = 0;
+
+    // GET ITEMS
+    var lista = JSON.parse(localStorage.getItem("my_lista"));
+
+    var table = document.getElementById("mytable");
+    var tbd = document.getElementsByTagName("tbody")[0];
+    var row;
+    var cell1;
+    var cell2;
+    var cell3;
+    for (var i = 0; i < lista.length; i++) {
+      //evgala to length
+      row = tbd.insertRow(i);
+      cell1 = row.insertCell(0);
+      cell2 = row.insertCell(1);
+      cell3 = row.insertCell(2);
+      cell1.innerHTML = lista[i].title
+      cell2.innerHTML = lista[i].value
+      cell3.innerHTML = '<span onclick="myalertfn()' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
+    }
+
+    const functionBalance = () => {
+
+      var balanceSum = budgetSum - expenseSum;
+      document.querySelector("#balance").innerHTML = '$' + balanceSum;
+
+      // var sum = 0;
+      for (var i = 0; i < lista.length; i++) {
+        //evala to i sti lista
+        sum = sum + parseInt(lista[i].value);
+        console.log(sum)
+        // console.log(sum)
+      }
+      document.querySelector("#expenses").innerHTML = '$' + sum;
+    }
+
+    const functionCalculate = () => {
+      budgetSum = document.getElementById("budget").value;
+      document.querySelector("#moneybudget").innerHTML = '$' + budgetSum
+      //  san onclick
+
+      functionBalance()
+    };
+
+    const functionExpenses = () => {
+
+      // thn evgala apo global
+      var expensenameSum;
 
 
-    <script>
-      var budgetSum = 0;
-      var expenseSum = 0;
+      expenseSum = document.getElementById("expense").value;
+      expensenameSum = document.getElementById("expensename").value;
+      // expenseValue = document.getElementById("expense").value;   //??????
 
-      // GET ITEMS
-      var lista = JSON.parse(localStorage.getItem("my_lista"));
+
+
+      //  LIST PUSH
+      lista.push({ title: expensenameSum, value: expenseSum });
 
       var table = document.getElementById("mytable");
       var tbd = document.getElementsByTagName("tbody")[0];
-      var row;
-      var cell1;
-      var cell2;
-      var cell3;
-      for (var i = 0; i < lista; i++) {
-        //evgala to length
-        row = tbd.insertRow(i);
-        cell1 = row.insertCell(0);
-        cell2 = row.insertCell(1);
-        cell3 = row.insertCell(2);
-        cell1.innerHTML = lista[i].title
-        cell2.innerHTML = lista[i].value
+
+      var row = tbd.insertRow(0);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      for (var i = 0; i < lista.length; i++) {
+
+        cell1.innerHTML = lista[i].title;
+        cell2.innerHTML = lista[i].value;
         cell3.innerHTML = '<span onclick="myalertfn()' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
       }
 
-      const functionBalance = () => {
-
-        var balanceSum = budgetSum - expenseSum;
-        document.querySelector("#balance").innerHTML = '$' + balanceSum;
-
-        var sum = 0;
-        for (var i = 0; i < lista; i++) {
-          //ebgala length
-          sum = sum + parseInt(lista[i].value);
-        }
-        document.getElementById("expenses").innerHTML = sum;
-      }
-
-      const functionCalculate = () => {
-        budgetSum = document.getElementById("budget").value;
-        document.querySelector("#moneybudget").innerHTML = '$' + budgetSum
-        //  san onclick
-        functionBalance()
-      };
-
-      const functionExpenses = () => {
-
-        // thn evgala apo global
-        var expensenameSum;
-
-        expenseSum = document.getElementById("expense").value;
-        expensenameSum = document.getElementById("expensename").value;
-        expenseValue = document.getElementById("expense").value;
-
-        //  LIST PUSH
-        lista.push({ title: expensenameSum, value: expenseSum });
-
-        var table = document.getElementById("mytable");
-        var tbd = document.getElementsByTagName("tbody")[0];
-
-        var row = tbd.insertRow(0);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        for (var i = 0; i < lista.length; i++) {
-
-          cell1.innerHTML = lista[i].title;
-          cell2.innerHTML = lista[i].value;
-          cell3.innerHTML = '<span onclick="myalertfn()' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
-        }
+      // LOCAL STORAGE
 
 
-        // LOCAL STORAGE
+      // localStorage.setItem("my_lista", JSON.stringify(lista)); //store lista
+      // var storedLista = JSON.parse(localStorage.getItem("my_lista"));
+
+      functionBalance()
+    };
 
 
-        // localStorage.setItem("my_lista", JSON.stringify(lista)); //store lista
-        // var storedLista = JSON.parse(localStorage.getItem("my_lista"));
-
-        functionBalance()
-      };
+    localStorage.setItem("my_lista", JSON.stringify(lista)); //store lista
+    var storedLista = JSON.parse(localStorage.getItem("my_lista"));
 
 
-      localStorage.setItem("my_lista", JSON.stringify(lista)); //store lista
-      var storedLista = JSON.parse(localStorage.getItem("my_lista"));
+    function myalertfn(katipoupira) {
 
-
-      function myalertfn(katipoupira) {
-
-        document.getElementById("mytable").deleteRow(katipoupira);
-      }
+      document.getElementById("mytable").deleteRow(katipoupira);
+    }
 
 
 
-    </script>
-  </div>
+  </script>
+  <!-- </div> -->
 </body>
 
 </html>
