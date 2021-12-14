@@ -130,10 +130,14 @@
     var expenseSum = 0;
     var expensenameSum;
     var sum = 0;
+    var balanceSum = 0;
 
 
     // GET ITEMS
-    var lista = JSON.parse(localStorage.getItem("my_lista"));
+
+
+    //  var title_amount_list = JSON.parse(localStorage.getItem("my_lista"));
+    var title_amount_list = []
 
     var table = document.getElementById("mytable");
     var tbd = document.getElementsByTagName("tbody")[0];
@@ -141,15 +145,15 @@
     var cell1;
     var cell2;
     var cell3;
-    for (var i = 0; i < lista.length; i++) {
+    for (var i = 0; i < title_amount_list?.length; i++) {
       //evgala to length
       row = tbd.insertRow(i);
       cell1 = row.insertCell(0);
       cell2 = row.insertCell(1);
       cell3 = row.insertCell(2);
-      cell1.innerHTML = lista[i].title
-      cell2.innerHTML = lista[i].value
-      cell3.innerHTML = '<span onclick="myalertfn()' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
+      cell1.innerHTML = title_amount_list[i].title
+      cell2.innerHTML = title_amount_list[i].value
+      cell3.innerHTML = '<span onclick="myalertfn()' + (title_amount_list.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
     }
 
 
@@ -158,20 +162,22 @@
 
 
       //-SUM 
-      var balanceSum = budgetSum - sum;
+      sum = sum + expenseSum;
+
+      balanceSum = budgetSum - sum;
       document.querySelector("#balance").innerHTML = '$' + balanceSum;
 
       // vazw mesa to sum giati thelw na ekteleitai kai na allazei kai to balance mazi
-      sum = 0;
-      for (var i = 0; i < lista.length; i++) {
-        //evala to i sti lista
-        sum = sum + parseInt(lista[i].value);
 
-        // console.log(lista[i].value)
-        // console.log(typeof sum)
-        // console.log(sum)
-      }
-      document.querySelector("#expenses").innerHTML = '$' + expenseSum;
+      // for (var i = 0; i < title_amount_list?.length; i++) {
+      //evala to i sti title_amount_list
+      // sum = sum + parseInt(title_amount_list[i].value);
+
+      // console.log(title_amount_list[i].value)
+      // console.log(typeof sum)
+      // console.log(sum)
+      // }
+      document.querySelector("#expenses").innerHTML = '$' + sum;
     }
 
     const functionCalculate = () => {
@@ -189,12 +195,12 @@
       // thn evgala apo global
       // var expensenameSum;
 
-      expenseSum = document.getElementById("expense").value;
+      expenseSum = +document.getElementById("expense").value;
       expensenameSum = document.getElementById("expensename").value;
       // expenseValue = document.getElementById("expense").value;   //??????
 
       //  LIST PUSH
-      lista.push({ title: expensenameSum, value: expenseSum });
+      title_amount_list.push({ title: expensenameSum, value: expenseSum });
 
       var table = document.getElementById("mytable");
       var tbd = document.getElementsByTagName("tbody")[0];
@@ -203,17 +209,17 @@
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
       var cell3 = row.insertCell(2);
-      for (var i = 0; i < lista.length; i++) {
+      for (var i = 0; i < title_amount_list.length; i++) {
 
-        cell1.innerHTML = lista[i].title;
-        cell2.innerHTML = lista[i].value;
-        cell3.innerHTML = '<span onclick="myalertfn()' + (lista.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
+        cell1.innerHTML = title_amount_list[i].title;
+        cell2.innerHTML = title_amount_list[i].value;
+        cell3.innerHTML = '<span onclick="myalertfn()' + (title_amount_list.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
       }
 
       // LOCAL STORAGE
 
 
-      localStorage.setItem("my_lista", JSON.stringify(lista)); //store lista
+      localStorage.setItem("my_lista", JSON.stringify(title_amount_list)); //store title_amount_list
       var storedLista = JSON.parse(localStorage.getItem("my_lista"));
 
       functionBalance()
