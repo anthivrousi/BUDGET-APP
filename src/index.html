@@ -132,12 +132,10 @@
     var sum = 0;
     var balanceSum = 0;
 
-
     // GET ITEMS
 
-
-    //  var title_amount_list = JSON.parse(localStorage.getItem("my_lista"));
-    var title_amount_list = []
+    var title_amount_list = JSON.parse(localStorage.getItem("my_lista"));
+    // var title_amount_list = [] an den hthela local storage
 
     var table = document.getElementById("mytable");
     var tbd = document.getElementsByTagName("tbody")[0];
@@ -145,8 +143,7 @@
     var cell1;
     var cell2;
     var cell3;
-    for (var i = 0; i < title_amount_list?.length; i++) {
-      //evgala to length
+    for (var i = 0; i < title_amount_list.length; i++) {
       row = tbd.insertRow(i);
       cell1 = row.insertCell(0);
       cell2 = row.insertCell(1);
@@ -156,27 +153,14 @@
       cell3.innerHTML = '<span onclick="myalertfn()' + (title_amount_list.length - 1) + ')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>'
     }
 
-
     // FUNCTION BALANCE
     const functionBalance = () => {
 
-
-      //-SUM 
       sum = sum + expenseSum;
 
       balanceSum = budgetSum - sum;
       document.querySelector("#balance").innerHTML = '$' + balanceSum;
 
-      // vazw mesa to sum giati thelw na ekteleitai kai na allazei kai to balance mazi
-
-      // for (var i = 0; i < title_amount_list?.length; i++) {
-      //evala to i sti title_amount_list
-      // sum = sum + parseInt(title_amount_list[i].value);
-
-      // console.log(title_amount_list[i].value)
-      // console.log(typeof sum)
-      // console.log(sum)
-      // }
       document.querySelector("#expenses").innerHTML = '$' + sum;
     }
 
@@ -190,14 +174,8 @@
 
     const functionExpenses = () => {
 
-
-
-      // thn evgala apo global
-      // var expensenameSum;
-
       expenseSum = +document.getElementById("expense").value;
       expensenameSum = document.getElementById("expensename").value;
-      // expenseValue = document.getElementById("expense").value;   //??????
 
       //  LIST PUSH
       title_amount_list.push({ title: expensenameSum, value: expenseSum });
@@ -217,7 +195,6 @@
       }
 
       // LOCAL STORAGE
-
 
       localStorage.setItem("my_lista", JSON.stringify(title_amount_list)); //store title_amount_list
       var storedLista = JSON.parse(localStorage.getItem("my_lista"));
